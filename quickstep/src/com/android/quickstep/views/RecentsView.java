@@ -4012,16 +4012,10 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
     }
 
     @SuppressWarnings("unused")
-    public void dismissAllTasks(View view, boolean vibrate) {
-        if (vibrate) {
-            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
-        }
+    private void dismissAllTasks(View view) {
+        VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
         runDismissAnimation(createAllTasksDismissAnimation(DISMISS_TASK_DURATION));
         mActivity.getStatsLogManager().logger().log(LAUNCHER_TASK_CLEAR_ALL);
-    }
-
-    private void dismissAllTasks(View view) {
-        dismissAllTasks(view, true);
     }
 
     private void dismissCurrentTask() {
